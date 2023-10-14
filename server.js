@@ -5,6 +5,9 @@ import morgan from "morgan";
 import connectDB from "./config/config.js";
 import authRoutes from "./routes/authRoute.js"
 import cors from 'cors'
+import categoryRoutes from './routes/categoryRoutes.js'
+import productRoutes from './routes/productRoutes.js'
+
 
 // Config dotenv
 dotenv.config();
@@ -25,10 +28,11 @@ app.get('/', (req, res) => {
 })
 
 //  routes
-app.use('/api/v1/auth',authRoutes)
-
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/category', categoryRoutes)
+app.use('/api/v1/product', productRoutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is runninng on Port ${PORT} and mode ${process.env.DEV_MODE}`.bgWhite.white);
+    console.log(`Server is runninng on Port ${PORT} and mode ${process.env.DEV_MODE}`.bgWhite.black);
 }) 

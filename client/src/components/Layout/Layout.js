@@ -17,7 +17,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
                 <script src="https://kit.fontawesome.com/ba64c4f071.js" crossorigin="anonymous"></script>
             </Helmet>
             <Header />
-            <main style={{ minHeight: "70vh" }}>
+            <main style={{ minHeight: "80vh" }}>
                 {children}
             </main>
             <Footer />
@@ -25,7 +25,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
     )
 }
 Layout.defaultProps = {
-    title: 'ECommerce App',
+    title: 'E-Commerce App',
     description: 'Mern Stack project',
     author: 'Anshu Kumar',
     keywords: 'Welcome'

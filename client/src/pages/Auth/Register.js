@@ -6,12 +6,14 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import './Reg.css'
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
+    const [answer, setAnswer] = useState("");
     const [address, setAddress] = useState("");
 
     // Navigation
@@ -22,7 +24,7 @@ const Register = () => {
         try {
             // toast.success("Hello");
             const res = await axios.post("/api/v1/auth/register",
-                { name, email, password, phone, address });
+                { name, email, password, phone, address, answer });
             if (res.data.success) {
                 navigate('/login');
                 toast.success(res.data.message);
@@ -39,45 +41,51 @@ const Register = () => {
     return (
         <Layout title={'Register here'}>
             <div className='container'>
-                <div className="wrapper">
+                <div className="wrapperR">
                     <form onSubmit={handleSubmit}>
                         <h1>Register</h1>
-                        <div className="input-box">
+                        <div className="input-boxR">
                             <input type="text" value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="Name" required />
                             <i className="fa-solid fa-user" />
                         </div>
-                        <div className="input-box">
+                        <div className="input-boxR">
                             <input type="email" value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email" required />
                             <i className="fa-solid fa-envelope" />
                         </div>
-                        <div className="input-box">
+                        <div className="input-boxR">
                             <input type="password" value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password" required />
                             <i className="fa-solid fa-key" />
                         </div>
-                        <div className="input-box">
+                        <div className="input-boxR">
                             <input type="text" value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 placeholder="Phone" required />
                             <i className="fa-solid fa-phone" />
                         </div>
-                        <div className="input-box">
+                        <div className="input-boxR">
                             <input type="text" value={address}
                                 onChange={(e) => setAddress(e.target.value)}
                                 placeholder="Address" required />
                             <i className="fa-solid fa-home" />
                         </div>
+                        <div className="input-boxR">
+                            <input type="text" value={answer}
+                                onChange={(e) => setAnswer(e.target.value)}
+                                placeholder="Your birth Place" required />
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
                         <div className="remember-forgot">
                             <label htmlFor="chk"><input type="checkbox" id="chk" />Remember me</label>
                         </div>
-                        <button className="btn" type="submit">Register</button>
+                        <button className="btnR" type="submit">Register</button>
                         <div className="register-link">
-                            <p>Already have an account <Link to="/login">Login</Link></p>
+                            <p>Already have an account ? <Link to="/login">Login</Link></p>
                         </div>
                     </form>
                 </div>
